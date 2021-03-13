@@ -96,3 +96,9 @@ const theQuestions = [
         element.classList.add('wrong')
       }
     }
+    var seconds = document.getElementById("thecountdowntimer").textContent;
+    var countdown = setInterval(function() {
+        seconds--;
+        document.getElementById("thecountdowntimer").textContent = seconds;
+        if (seconds <= 0) clearInterval(countdown);
+    }, 1000);}
