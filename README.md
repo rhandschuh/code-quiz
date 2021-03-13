@@ -5,4 +5,5 @@
 # below is a link to my repo and screenshot of my project
 
 # https://github.com/rhandschuh/code-quiz
-# sc
+# https://rhandschuh.github.io/code-quiz/screenshot.png
+# https://rhandschuh.github.io/code-quiz/index.html
