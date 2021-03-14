@@ -1,9 +1,10 @@
-const startButton = document.getElementById('startbtn')
+//calling everything
 const nextButton = document.getElementById('thenextbtn')
+const startButton = document.getElementById('startbtn')
 const containerforquestions = document.getElementById('containerforquestions')
-const thequestionsforit = document.getElementById('question')
 const theanswerbutton = document.getElementById('buttonsforanswers')
-
+const thequestionsforit = document.getElementById('question')
+//variables
 const theQuestions = [
     {
       question: 'a question here',
@@ -38,12 +39,14 @@ const theQuestions = [
       ]
     }
   ]
+  //click event listener
   let theshuffledquestions , theindex
   startButton.addEventListener('click',startthegame)
   nextButton.addEventListener('click', () => {
     theindex++
     setthenextquestion()
   })
+  //starting thr game, sorting the questions
   function startthegame() {
     startButton.classList.add('hide')
     theshuffledquestions = questions.sort(() => Math.random() - .5)
@@ -51,10 +54,12 @@ const theQuestions = [
     containerforquestions.classList.remove('hide')
     setthenextquestion()
   }
+  //reset to next question 
   function setthenextquestion() {
     resetState()
     showthequestion(theshuffledquestions[theindex])
   }
+  //function to button answer
   function showthequestion(question) {
     thequestionElement.innerText = question.question
     question.answers.forEach(answer => {
@@ -68,6 +73,7 @@ const theQuestions = [
       theanswerbutton.appendChild(button)
     })
   }
+  //reset and hide
   function resetState() {
     clearStatusClass(document.body)
     nextButton.classList.add('hide')
@@ -75,6 +81,7 @@ const theQuestions = [
       theanswerbutton.removeChild(theanswerbutton.firstChild)
     }
   }
+  // the answer, selecting the button
   function theAnswer(e) {
     const selectedButton = e.target
     const correct = selectedButton.dataset.correct
@@ -88,6 +95,7 @@ const theQuestions = [
       startButton.innerText = 'Restart'
       startButton.classList.remove('hide')
     }
+    // if correct or wrong
     function setStatusClass(element, correct) {
       clearStatusClass(element)
       if (correct) {
@@ -96,9 +104,10 @@ const theQuestions = [
         element.classList.add('wrong')
       }
     }
+    //countdown timer
     var seconds = document.getElementById("thecountdowntimer").textContent;
     var countdown = setInterval(function() {
         seconds--;
         document.getElementById("thecountdowntimer").textContent = seconds;
         if (seconds <= 0) clearInterval(countdown);
-    }, 1000);}
+    }, 10);}
